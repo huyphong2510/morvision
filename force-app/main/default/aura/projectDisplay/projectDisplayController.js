@@ -46,7 +46,7 @@
                 "message": "The record was deleted."
             });
             resultsToast.fire();
-            window.location.href = "https://internsf-dev-ed.lightning.force.com/lightning/page/home";
+            window.location.href = "https://internsf-dev-ed.lightning.force.com/lightning/o/Project__c/list?filterName=Recent";
 
         } else if(eventParams.changeType === "ERROR") {
             // there’s an error while loading, saving, or deleting the record
