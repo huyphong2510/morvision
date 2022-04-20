@@ -5,8 +5,9 @@
     <aura:attribute name="projectRecord" type="object" />
     <aura:attribute name="recordSaveError" type="String" default="" />
     <aura:attribute name="strRecordId" type="String" />
-    <lightning:overlayLibrary aura:id="overlayLibDemo1"/>
+    <lightning:overlayLibrary aura:id="overlayLibDemo"/>
     <lightning:notificationsLibrary aura:id="notifLib"/>
+    <aura:attribute name="isOpen" type="boolean" default="true"/>
 
     <div class="slds-modal__content slds-p-around_medium">
         <lightning:recordEditForm aura:id="editform"

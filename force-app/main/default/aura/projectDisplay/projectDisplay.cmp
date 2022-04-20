@@ -5,7 +5,7 @@
     <aura:attribute name="strRecId" type="String" />
     <lightning:overlayLibrary aura:id="overlayLibDemo"/>
     <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
-    <aura:attribute name="isOpen" type="boolean" default="false"/>
+
     <!-- pop up -->
     <force:recordData aura:id="recordHandler" fields="Id" recordId="{!v.recordId}" targetError="{!v.recordError}"
         recordUpdated="{!c.handleRecordUpdated}" />
