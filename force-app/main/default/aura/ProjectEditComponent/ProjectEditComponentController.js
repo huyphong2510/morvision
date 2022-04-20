@@ -8,7 +8,7 @@
         component.find('notifLib').showToast({
             "variant": "success",
             "title": strPrjName,
-            "message": "Account Updated Successfully!!"
+            "message": "Project Updated Successfully!!"
         });
         component.find("overlayLibDemo1").notifyClose();
     },
