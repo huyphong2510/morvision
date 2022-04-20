@@ -1,0 +1,11 @@
+<aura:component description="ShowContacts"
+implements="flexipage:availableForAllPageTypes" access="global"
+                controller="CommunityCreateNew">   
+    <aura:attribute name="userDetails" type="List" />
+    <aura:handler name="init"
+                  value="{!this}"
+                  action="{!c.doInit}"/> 
+    <aura:iteration items="{!v.userDetails}" var="item">
+        {!item.Name} <br/>
+    </aura:iteration>
+</aura:component>

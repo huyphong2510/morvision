@@ -1,0 +1,38 @@
+<aura:component implements="flexipage:availableForAllPageTypes, force:hasRecordId" controller="UpdateProjectController">
+    <force:recordData aura:id="recordHandler" fields="Id" recordId="{!v.recordId}" targetError="{!v.recordError}"
+        recordUpdated="{!c.handleRecordUpdated}" />
+    <aura:attribute name="recordError" type="String" access="private" />
+    <aura:attribute name="projectDetails" type="List" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <lightning:recordEditForm recordId="{!v.recordId}" objectApiName="Project__c">
+        <lightning:messages />
+        <div class="">
+            <div>
+                <lightning:inputField fieldName="Name" />
+            </div><br />
+            <div>
+                <lightning:inputField fieldName="Deadline__c" />
+            </div><br />
+            <div>
+                <lightning:inputField fieldName="Status__c" />
+            </div><br />
+            <div>
+                <lightning:inputField fieldName="PM__c" />
+            </div><br />
+            <div>
+                <lightning:inputField fieldName="Account_Lookup__c" />
+            </div><br />
+            <div class="slds-p-horizontal--small">
+            </div>
+        </div>
+        <lightning:button class="slds-m-top_small" variant="success" type="submit" label="Update" />
+        <lightning:button class="slds-m-top_small" label="Delete Record" variant="destructive"onclick="{!c.handleDeleteRecord}" />
+    </lightning:recordEditForm>
+    <!-- </aura:if> -->
+
+    <aura:if isTrue="{!not(empty(v.recordError))}">
+        <div class="recordError">
+            {!v.recordError}</div>
+    </aura:if>
+
+</aura:component>

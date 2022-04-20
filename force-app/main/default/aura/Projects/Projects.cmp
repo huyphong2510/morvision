@@ -1,0 +1,62 @@
+<aura:component description="ShowProjects" implements="flexipage:availableForAllPageTypes, force:hasRecordId"
+    access="global" controller="ProjectsController">
+    <aura:attribute name="projectDetails" type="List" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:attribute name="url" type="String" />
+    <aura:attribute name="projectRecord" type="Project__c" />
+  
+    <table class="slds-table slds-table_cell-buffer slds-table_bordered"
+        aria-label="Example default base table of Opportunities">
+        <thead>
+            <tr class="slds-line-height_reset">
+                <th class="" scope="col">
+                    <div class="slds-truncate" title="Name">Name</div>       
+                </th>
+                <th>
+                    <div class="slds-truncate" title="Deadline">Deadline</div>
+                </th>
+                <th>
+                    <div class="slds-truncate" title="Company">Company</div>
+                </th>
+                <th>
+                    <div class="slds-truncate" title="PM">PM</div>
+                </th>
+                <th>
+                    <div class="slds-truncate" title="Status">Status</div>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <aura:iteration items="{!v.projectDetails}" var="item">
+                <tr>
+                    <td data-label=" Name">
+                        <a href="{!'/' + item.Id}">{!item.Name__c}</a>
+                    </td>
+                    <td data-label="Deadline">
+                        <div class="slds-truncate" title="">{!item.Deadline__c}</div>
+                        
+                    </td>
+                    <td data-label="Company">
+                        <div class="slds-truncate" title="">{!item.Account_Lookup__r.Name}</div>
+                    </td>
+                    <td data-label="PM">
+                        <div class="slds-truncate" title="">{!item.PM__r.Name}</div>
+                    </td>
+                    <td data-label="Status">
+                        <div class="slds-truncate" title="">{!item.Status__c}</div>
+                    </td>
+                </tr>
+            </aura:iteration>
+        </tbody>
+    </table>
+
+ 
+    <!-- Create Project  -->
+    <lightning:recordForm
+        recordId = "{!v.recordId}"
+        objectApiName="Project__c"
+        layoutType="Compact"
+        mode="edit" 
+        onsuccess="{!c.handleSuccess}"/>
+
+</aura:component>

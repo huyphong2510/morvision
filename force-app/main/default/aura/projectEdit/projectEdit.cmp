@@ -1,0 +1,35 @@
+<aura:component implements="flexipage:availableForAllPageTypes,force:hasRecordId">
+    <aura:attribute name="record" type="object"/>
+    <aura:attribute name="projectRecord" type="object"/>
+    <aura:attribute name="recordSaveError" type="String" default=""/>
+    <force:recordData aura:id="recordEditor"
+    fields="Name__c, Deadline__c, Status__c"
+    recordId="{!v.recordId}"
+    targetRecord="{!v.record}"
+    targetError="{!v.recordSaveError}"
+    targetFields ="{!v.projectRecord}"
+    mode="EDIT"
+    recordUpdated="{!c.recordUpdated}" />
+    
+    <lightning:card  title="Edit Project">
+        <div class="slds-p-horizontal--small">
+            <lightning:input label="Project Name" value="{!v.projectRecord.Name__c}"/>
+            <br/>
+            <lightning:input label="Project Name" value="{!v.projectRecord.Name__c}"/>
+            <br/>
+            <lightning:input label="Project Name" value="{!v.projectRecord.Name__c}"/>
+            <br/>
+            <lightning:input label="Project Name" value="{!v.projectRecord.Name__c}"/>
+            <br/>
+            <lightning:input label="Project Name" value="{!v.projectRecord.Name__c}"/>
+            <br/>
+            <lightning:button label="Save Project" variant="brand" onclick="{!c.handleSaveRecord}"/>
+        </div>
+    </lightning:card>
+     <!-- Display error message -->
+     <aura:if isTrue="{!not(empty(v.recordSaveError))}">
+        <div class="recordError">
+            {!v.recordSaveError}</div>
+    </aura:if>
+</aura:component>	
+
