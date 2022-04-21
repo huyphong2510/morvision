@@ -52,11 +52,11 @@
 
  
     <!-- Create Project  -->
-    <lightning:recordForm
+    <!-- <lightning:recordForm
         recordId = "{!v.recordId}"
         objectApiName="Project__c"
         layoutType="Compact"
         mode="edit" 
-        onsuccess="{!c.handleSuccess}"/>
+        onsuccess="{!c.handleSuccess}"/> -->
 
 </aura:component>
