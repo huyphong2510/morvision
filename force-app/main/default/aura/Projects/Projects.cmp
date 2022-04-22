@@ -37,10 +37,10 @@
                         
                     </td>
                     <td data-label="Company">
-                        <div class="slds-truncate" title="">{!item.Account_Lookup__r.Name}</div>
+                        <a href="{!'/' + item.Account_Lookup__r.Id}">{!item.Account_Lookup__r.Name}</a>
                     </td>
                     <td data-label="PM">
-                        <div class="slds-truncate" title="">{!item.PM__r.Name}</div>
+                        <a href="{!'/' + item.PM__r.Id}">{!item.PM__r.Name}</a>
                     </td>
                     <td data-label="Status">
                         <div class="slds-truncate" title="">{!item.Status__c}</div>
