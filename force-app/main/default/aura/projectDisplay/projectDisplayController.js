@@ -15,6 +15,7 @@
                                }                               
                            });
     },
+    
     handleDeleteRecord: function(component, event, helper) {
         component.find("recordHandler").deleteRecord($A.getCallback(function(deleteResult) {
             // NOTE: If you want a specific behavior(an action or UI behavior) when this action is successful 

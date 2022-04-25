@@ -1,12 +1,35 @@
-<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId">
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId" controller="FileController">
     <aura:attribute name="filetype" type="List" default="['.png', '.jpg', '.jpeg']" />
     <aura:attribute name="multiple" type="Boolean" default="true" />
     <aura:attribute name="disabled" type="Boolean" default="true" />
     <aura:attribute name="recordId" type="String" />
+     <aura:attribute name="encryptedToken" type="String" />
+     <aura:attribute name="contentDocument" type="ContentDocument" />
+     <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+     <aura:attribute name="fileDetails" type="List" />
+  
     <lightning:fileUpload label="Attach File"
         name="fileUploader"
         multiple="true"
         accept="{!v.filetype}"
         recordId="{!v.recordId}"
         onuploadfinished="{!c.handleUploadFinished}" />
+        <!-- display file -->
+        <lightning:card title="Preview File in Lightning Aura">
+        <div class="slds-p-around_small">
+            <p>Click on the File below to Preview:</p>
+            <br/>
+            <aura:iteration items="{!v.fileDetails}" var="item">
+            <lightning:fileCard fileId="{!item.Id}" />
+            <br/>
+            <p>Click below to Preview: </p> <br/>
+            <lightning:pill label="File" name="" onclick="{!c.previewFile}">
+                <aura:set attribute="media">
+                    <lightning:icon iconName="utility:file" />
+                </aura:set>
+            </lightning:pill>
+        </aura:iteration>
+        </div>
+    </lightning:card>
+        <!-- display file -->
 </aura:component>

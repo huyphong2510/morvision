@@ -4,7 +4,16 @@
     <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
     <aura:attribute name="url" type="String" />
     <aura:attribute name="projectRecord" type="Project__c" />
+    <!-- pop up -->
+    <aura:attribute name="strRecId" type="String" />
+    <lightning:overlayLibrary aura:id="overlayLibDemo"/>
+    <!-- sort -->
+    <!-- <aura:attribute name="mycolumns" type="List"/>
+    <aura:attribute name="sortedBy" type="String" default="Name"/>
+    <aura:attribute name="sortedDirection" type="String" default="asc"/> -->
+
   
+    <lightning:button label="Create New Project" title="Neutral action" onclick="{! c.handleShowModal }"/>
     <table class="slds-table slds-table_cell-buffer slds-table_bordered"
         aria-label="Example default base table of Opportunities">
         <thead>
@@ -32,7 +41,7 @@
                     <td data-label=" Name">
                         <a href="{!'/' + item.Id}">{!item.Name__c}</a>
                     </td>
-                    <td data-label="Deadline">
+                    <td data-label="Deadline" >
                         <div class="slds-truncate" title="">{!item.Deadline__c}</div>
                         
                     </td>
@@ -51,12 +60,6 @@
     </table>
 
  
-    <!-- Create Project  -->
-    <!-- <lightning:recordForm
-        recordId = "{!v.recordId}"
-        objectApiName="Project__c"
-        layoutType="Compact"
-        mode="edit" 
-        onsuccess="{!c.handleSuccess}"/> -->
+ 
 
 </aura:component>
