@@ -1,12 +1,12 @@
 ({
     doInit : function(component, event, helper) {
         console.log('inside');
-        var action = component.get("c.getProjects");
+        var action = component.get("c.get7Days");
         //action.setparm
         action.setCallback(this,function(response){
             if (response.getState() === "SUCCESS"){
                  console.log('success');
-                component.set("v.projectDetails",response.getReturnValue());
+                component.set("v.tasks7days",response.getReturnValue());
             }
             else
             {
@@ -15,47 +15,44 @@
         });
         $A.enqueueAction(action);
     },
-    handleShowModal: function(component) {
-        var strPrjId = component.get("v.recordId");
-        console.log('Project Id ====>'+strPrjId);
-        $A.createComponent("c:CreateProject", 
-                           {strRecordId : strPrjId},
+    handleShowModal: function(component) {   
+        $A.createComponent("c:Tasks7Days", 
                            function(result, status) {
                                if (status === "SUCCESS") {
                                    component.find('overlayLibDemo').showCustomModal({
-                                       header: "Create New Project",
+                                       header: "7 Days",
                                        body: result, 
                                        showCloseButton: true,
                                        cssClass: "mymodal", 
                                    })
                                }                               
                            });
+    },
+    get7days : function (component, event, helper) {
+        console.log('inside');
+        var action = component.get("c.get7Days");
+        //action.setparm
+        action.setCallback(this,function(response){
+            if (response.getState() === "SUCCESS"){
+                 console.log('success');
+                component.set("v.taskexpire",response.getReturnValue());
+            }
+            else
+            {
+                alert('Error');
+            }
+        });
+        $A.enqueueAction(action);
     },
     popUp: function(component) {
-        var strPrjId = component.get("v.recordId");
-        console.log('Project Id ====>'+strPrjId);
-        $A.createComponent("c:CreateProject", 
-                           {strRecordId : strPrjId},
+        var strTskId = component.get("v.recordId");
+        console.log('Task Id ====>'+strTskId);
+        $A.createComponent("c:Tasks7Days", 
+                           {strRecordId : strTskId},
                            function(result, status) {
                                if (status === "SUCCESS") {
                                    component.find('overlayLib').showCustomModal({
-                                       header: "Create A Project",
-                                       body: result, 
-                                       showCloseButton: true,
-                                       cssClass: "mymodal", 
-                                   })
-                               }                               
-                           });
-    },
-    doInit2: function(component) {
-        var strPrjId = component.get("v.recordId");
-        console.log('Project Id ====>'+strPrjId);
-        $A.createComponent("c:CreateProject", 
-                           {strRecordId : strPrjId},
-                           function(result, status) {
-                               if (status === "SUCCESS") {
-                                   component.find('overlayLib').showCustomModal({
-                                       header: "Create New Project",
+                                       header: "7 Days",
                                        body: result, 
                                        showCloseButton: true,
                                        cssClass: "mymodal", 
@@ -115,38 +112,6 @@
         } else if(eventParams.changeType === "ERROR") {
             // there’s an error while loading, saving, or deleting the record
         }
-    },
-    
-    handleSuccess: function (component, event, helper) {
-        component.find('notifLib').showToast({
-            "title": "Record updated!",
-            "message": "The record "+ event.getParam("id") + " has been updated successfully.",
-            "variant": "success"
-        });
-    },
+}
+})
 
-    handleError: function (component, event, helper) {
-        component.find('notifLib').showToast({
-            "title": "Something has gone wrong!",
-            "message": event.getParam("message"),
-            "variant": "error"
-        });
-    },
-    sortData: function (cmp, fieldName, sortDirection) {
-        var data = cmp.get("v.projectDetails");
-        var reverse = sortDirection !== 'asc';
-        data.sort(this.sortBy(fieldName, reverse));
-        cmp.set("v.projectDetails", data);
-    },
-    sortBy: function (field, reverse, primer) {
-        var key = primer ?
-            function(x) {return primer(x[field])} :
-            function(x) {return x[field]};
-        reverse = !reverse ? 1 : -1;
-        return function (a, b) {
-            return a = key(a), b = key(b), reverse * ((a > b) - (b > a));
-        }
-    },
-   
-
-});

@@ -1,0 +1,58 @@
+<aura:component controller="OpportunityController_AC"
+    implements="flexipage:availableForAllPageTypes,flexipage:availableForAllPageTypes,force:hasRecordId"
+    access="global">
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:attribute name="tasks1month" type="List" />
+    <aura:attribute name="record" type="object" />
+    <!-- <aura:attribute name="projectRecord" type="object" /> -->
+    <aura:attribute name="recordSaveError" type="String" default="" />
+    <aura:attribute name="strRecordId" type="String" />
+    <!-- pop up -->
+    <lightning:overlayLibrary aura:id="overlayLibDemo" />
+    <lightning:notificationsLibrary aura:id="notifLib" />
+    <!-- pop up -->
+    <!-- <aura:attribute name="isOpen" type="boolean" default="false" /> -->
+    <table class="slds-table slds-table_cell-buffer slds-table_bordered"
+        aria-label="Example default base table of Opportunities">
+        <thead>
+            <tr class="slds-line-height_reset">
+                <th class="" scope="col">
+                    <div class="slds-truncate" title="Name">Name</div>
+                </th>
+                <th class="" scope="col">
+                    <div class="slds-truncate" title="Name">Project</div>
+                </th>
+                <th class="" scope="col">
+                    <div class="slds-truncate" title="Name">Assigner</div>
+                </th>
+                <th class="" scope="col">
+                    <div class="slds-truncate" title="Name">Status</div>
+                </th>
+                <th class="" scope="col">
+                    <div class="slds-truncate" title="Name">End Date</div>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <aura:iteration items="{!v.tasks1month}" var="item">
+                <tr>
+                    <td data-label=" Name">
+                        <a href="{!'/' + item.Id}">{!item.Name}</a>
+                    </td>
+                    <td data-label=" Name">
+                        <a href="{!'/' + item.Project__c}">{!item.Project__r.Name}</a>
+                    </td>
+                    <td data-label=" Name">
+                        <a href="{!'/' + item.Assigner__c}">{!item.Assigner__r.Name}</a>
+                    </td>
+                    <td data-label=" Name">
+                       {!item.Status__c}
+                    </td>
+                    <td data-label=" Name">
+                        {!item.End_Date__c}
+                    </td>
+                </tr>
+            </aura:iteration>
+        </tbody>
+    </table>
+</aura:component>
