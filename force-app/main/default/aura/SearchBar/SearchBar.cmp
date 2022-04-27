@@ -1,6 +1,0 @@
-<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes">
-
-    <input type="text" class="form-control" onclick="{!c.searchKeyChange}"
-            placeholder="Search"/>
-
-</aura:component>
