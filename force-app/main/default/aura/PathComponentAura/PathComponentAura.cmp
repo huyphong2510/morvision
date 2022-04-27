@@ -1,5 +1,5 @@
 <aura:component implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId, force:lightningQuickAction" >
-    <aura:attribute name="variant" type="String" default="non-linear"/>
+    <aura:attribute name="variant" type="String" default="linear"/>
     <aura:attribute name="hideUpdateButton" type="Boolean" default="false"/>
     <force:recordData aura:id="recordHandler" fields="Id" recordId="{!v.recordId}" targetError="{!v.recordError}"
         recordUpdated="{!c.handleRecordUpdated}" />

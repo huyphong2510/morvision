@@ -3,9 +3,7 @@
     <aura:attribute name="projectRecord" type="object" />
     <!-- pop up -->
     <aura:attribute name="strRecId" type="String" />
-    <lightning:overlayLibrary aura:id="overlayLibDemo"/>
-    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
-
+    <lightning:overlayLibrary aura:id="overlayLibDemo"/>      
     <!-- pop up -->
     <force:recordData aura:id="recordHandler" fields="Id" recordId="{!v.recordId}" targetError="{!v.recordError}"
         recordUpdated="{!c.handleRecordUpdated}" />
